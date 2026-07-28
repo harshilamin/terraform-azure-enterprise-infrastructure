@@ -1,2 +1,6 @@
-# terraform-azure-enterprise-infrastructure
-Production-grade Azure Infrastructure using reusable Terraform modules.
+# Enterprise Azure Landing Zone Reference Architecture
+
+Maintained by Harshil Amin.
+
+## Overview
+Production-style Azure landing zone portfolio.
