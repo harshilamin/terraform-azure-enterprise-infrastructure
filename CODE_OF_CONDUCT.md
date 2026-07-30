@@ -1,2 +1,3 @@
 # Code of Conduct
-Be respectful.
+
+Communicate professionally and respectfully. Harassment, discrimination, personal attacks, publishing private information, and intentionally disruptive conduct are not acceptable.
