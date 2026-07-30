@@ -1,0 +1,7 @@
+flowchart TB
+    Internet --> FrontDoor[Azure Front Door]
+    FrontDoor --> AppGateway[Application Gateway WAF]
+    AppGateway --> Firewall[Azure Firewall]
+    Firewall --> Dev[Development Spoke]
+    Firewall --> QA[QA Spoke]
+    Firewall --> Prod[Production Spoke]

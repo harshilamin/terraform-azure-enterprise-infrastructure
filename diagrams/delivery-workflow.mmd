@@ -1,0 +1,8 @@
+flowchart LR
+    Developer --> Branch[Feature Branch]
+    Branch --> PR[Pull Request]
+    PR --> Format[Terraform Format]
+    Format --> Validate[Terraform Validate]
+    Validate --> Review[Peer Review]
+    Review --> Main[Main Branch]
+    Main --> Release[Versioned Release]
