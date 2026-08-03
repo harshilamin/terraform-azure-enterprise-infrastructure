@@ -1,21 +1,23 @@
-# Project Maturity Assessment
+# Project Maturity
 
-## Strengths
+## Mature portfolio capabilities
 
-- Clear module boundaries
-- Environment separation
-- Security-conscious design
-- Strong documentation
-- Repeatable validation
-- Realistic CI/CD patterns
-- Operational readiness content
+- Versioned Terraform modules and environment roots
+- Automated validation and native tests
+- Network and identity security patterns
+- Monitoring and cost-governance patterns
+- Pull-request and release automation
+- MkDocs documentation and GitHub Pages
+- Architecture decisions and runbooks
+- Dependency and release supply-chain controls
 
-## Portfolio limitations
+## Deliberate boundaries
 
-- No live Azure subscription is required or assumed
-- No production credentials are included
-- Plans and applies are not demonstrated against a real tenant
-- Azure Firewall and Application Gateway are architecture placeholders
-- Screenshots should be added only when real deployments exist
+- No live-production claim
+- No real credentials or employer code
+- No permanent Azure cost requirement
+- No application GitOps content in this infrastructure repository
 
-These limitations are intentional and should be stated honestly in interviews.
+## Readiness assessment
+
+Repository 1 is complete as an Azure infrastructure and platform-engineering portfolio. New Kubernetes workload, Helm, GitOps, OpenTelemetry, and application delivery work belongs in Repository 2.
