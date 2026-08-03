@@ -1,0 +1,8 @@
+terraform {
+  backend "azurerm" {
+    resource_group_name = "rg-tfstate-shared-cus-001"
+    storage_account_name = "sttfstateexample001"
+    container_name = "tfstate"
+    key = "qa/platform.tfstate"
+  }
+}
