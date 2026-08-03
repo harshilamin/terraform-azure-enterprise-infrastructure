@@ -1,0 +1,2 @@
+# Optional Azure Monitor notification destination.
+# monitoring_email = "platform-alerts@example.com"
