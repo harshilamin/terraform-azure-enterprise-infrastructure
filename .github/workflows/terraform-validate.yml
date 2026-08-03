@@ -6,6 +6,7 @@ on:
       - "**/*.tf"
       - "**/*.tfvars"
       - "**/*.tfvars.example"
+      - ".github/workflows/terraform-validate.yml"
   workflow_dispatch:
 
 permissions:
@@ -13,23 +14,44 @@ permissions:
 
 jobs:
   format:
+    name: Terraform Format
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: hashicorp/setup-terraform@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: "1.8.5"
-      - run: terraform fmt -check -recursive
+
+      - name: Check formatting
+        run: terraform fmt -check -recursive
 
   validate:
+    name: Validate ${{ matrix.environment }}
     runs-on: ubuntu-latest
+
     strategy:
+      fail-fast: false
       matrix:
-        environment: [dev, qa, prod]
+        environment:
+          - dev
+          - qa
+          - prod
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: hashicorp/setup-terraform@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: "1.8.5"
-      - run: terraform -chdir=environments/${{ matrix.environment }} init -backend=false
-      - run: terraform -chdir=environments/${{ matrix.environment }} validate
+
+      - name: Initialize without backend
+        run: terraform -chdir=environments/${{ matrix.environment }} init -backend=false
+
+      - name: Validate
+        run: terraform -chdir=environments/${{ matrix.environment }} validate

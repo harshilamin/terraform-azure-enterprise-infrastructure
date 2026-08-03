@@ -1,0 +1,12 @@
+flowchart TB
+    RG[Platform Resource Group]
+
+    RG --> ID[User Assigned Managed Identity]
+    RG --> KV[Azure Key Vault]
+    RG --> ST[Azure Storage Account]
+    RG --> ACR[Azure Container Registry]
+    RG --> LAW[Log Analytics Workspace]
+
+    ID --> KV
+    ACR --> AKS[Future AKS Platform]
+    LAW --> AKS
