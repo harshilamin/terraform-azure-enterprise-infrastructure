@@ -1,0 +1,19 @@
+scan:
+  scanners:
+    - vuln
+    - misconfig
+    - secret
+
+misconfiguration:
+  scanners:
+    - terraform
+
+severity:
+  - HIGH
+  - CRITICAL
+
+exit-code: 0
+
+skip-dirs:
+  - .terraform
+  - examples/sanitized-output

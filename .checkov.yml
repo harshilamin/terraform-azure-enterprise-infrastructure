@@ -1,0 +1,13 @@
+framework:
+  - terraform
+
+compact: true
+quiet: true
+soft-fail: true
+
+skip-path:
+  - .terraform
+  - examples/sanitized-output
+
+output:
+  - cli

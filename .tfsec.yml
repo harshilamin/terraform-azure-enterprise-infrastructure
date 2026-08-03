@@ -1,0 +1,8 @@
+minimum_severity: MEDIUM
+exclude:
+  - azure-storage-default-action-deny
+  - azure-container-logging
+
+exclude-path:
+  - .terraform
+  - examples/sanitized-output
