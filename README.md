@@ -1,49 +1,40 @@
 # Enterprise Azure Landing Zone Reference Architecture
 
-## Release v2.0.4 — MkDocs Documentation Site
+[![Terraform CI](https://github.com/harshilamin/terraform-azure-enterprise-infrastructure/actions/workflows/terraform-ci.yml/badge.svg)](https://github.com/harshilamin/terraform-azure-enterprise-infrastructure/actions/workflows/terraform-ci.yml)
+[![Documentation](https://github.com/harshilamin/terraform-azure-enterprise-infrastructure/actions/workflows/docs-pages.yml/badge.svg)](https://github.com/harshilamin/terraform-azure-enterprise-infrastructure/actions/workflows/docs-pages.yml)
+[![Release](https://img.shields.io/github/v/release/harshilamin/terraform-azure-enterprise-infrastructure)](https://github.com/harshilamin/terraform-azure-enterprise-infrastructure/releases)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-This patch release adds a browsable documentation website powered by MkDocs and GitHub Pages.
+## Release v2.0.5 — Release Automation and Final Polish
+
+This patch release completes the first polished version of Repository 1.
 
 ### Added
 
-- MkDocs Material configuration
-- Documentation homepage
-- Structured navigation
-- Architecture, CI/CD, security, operations, testing, and portfolio sections
-- GitHub Pages deployment workflow
-- Python documentation dependencies
-- Local documentation preview instructions
-- v2.0.4 release checklist
+- Automated GitHub Release workflow
+- Release artifact packaging
+- Generated release notes
+- Branch-protection guidance
+- Status badges
+- Release-process documentation
+- Repository completion assessment
 
 ## Safe release scope
 
-This release does not modify:
+This release does not modify Terraform modules, environment roots, provider configuration, backend configuration, or Azure resource definitions.
 
-- Terraform modules
-- Dev, QA, or Prod environment roots
-- Provider or backend configuration
-- Azure resource definitions
-
-## Preview locally
-
-```powershell
-python -m pip install -r requirements-docs.txt
-mkdocs serve
-```
-
-Then open:
+## Release flow
 
 ```text
-http://127.0.0.1:8000
+Merge pull request
+        |
+Create and push semantic tag
+        |
+Validate Terraform
+        |
+Package clean source archive
+        |
+Create GitHub Release
 ```
-
-## Roadmap
-
-- [x] v2.0.0 Integrated portfolio release
-- [x] v2.0.1 Repository governance
-- [x] v2.0.2 Local quality and security tooling
-- [x] v2.0.3 Native Terraform tests and examples
-- [x] v2.0.4 MkDocs and GitHub Pages
-- [ ] v2.0.5 Release automation and final polish
 
 Maintained by [Harshil Amin](https://github.com/harshilamin).
