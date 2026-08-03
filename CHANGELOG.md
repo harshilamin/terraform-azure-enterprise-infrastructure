@@ -1,20 +1,24 @@
 # Changelog
 
-## [2.0.3] - 2026-08-02
+## [2.0.4] - 2026-08-03
 
 ### Added
 
-- Native Terraform tests for naming, resource-group, and subnet modules
-- Naming example
-- Resource-group example
-- Networking example
-- PowerShell and Bash test runners
-- Testing documentation
+- MkDocs Material documentation site
+- Structured documentation navigation
+- Documentation homepage
+- GitHub Pages deployment workflow
+- Documentation dependencies
+- Local preview instructions
 - Release checklist
 
 ### Notes
 
-No existing environment or module implementation files were changed.
+No Terraform infrastructure files changed.
+
+## [2.0.3] - 2026-08-02
+
+- Native Terraform tests and examples
 
 ## [2.0.2] - 2026-08-02
 
