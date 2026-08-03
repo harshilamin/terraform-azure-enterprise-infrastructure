@@ -1,49 +1,53 @@
 # Enterprise Azure Landing Zone Reference Architecture
 
-## Release v1.6.0
+## Release v1.7.0 — CI/CD Deployment Workflows
 
-This release adds centralized Azure Monitor diagnostics and alert routing.
+This release adds enterprise-style Terraform delivery automation:
 
-### Added
+- Pull request formatting, validation, TFLint, and Checkov
+- Azure OIDC authentication without stored client secrets
+- Remote AzureRM state initialization
+- On-demand Terraform plan artifacts
+- Automatic Development deployment after merge
+- Protected QA and Production promotion
+- Per-environment concurrency controls
+- Deployment and rollback runbooks
 
-- Reusable Azure Monitor diagnostic-setting module
-- Reusable Azure Monitor action-group module
-- Diagnostic logs for AKS, Key Vault, ACR, and Storage
-- Metrics forwarding to Log Analytics
-- Environment-specific log retention and notification settings
-- Monitoring architecture and operational documentation
+## Delivery flow
 
-## Monitoring flow
-
-```text
-AKS / Key Vault / ACR / Storage
-              |
-              v
-     Diagnostic Settings
-              |
-              v
-     Log Analytics Workspace
-              |
-              v
-        Azure Monitor
-              |
-              v
-         Action Group
+```mermaid
+flowchart LR
+    B[Feature Branch] --> PR[Pull Request]
+    PR --> CI[Format Validate TFLint Checkov]
+    CI --> M[Merge to Main]
+    M --> D[Automatic Dev Deployment]
+    D --> Q[Approved QA Deployment]
+    Q --> P[Approved Production Deployment]
 ```
 
-## Validate
+## Required setup
+
+Before running authenticated workflows:
+
+1. Create GitHub Environments: `dev`, `qa`, and `prod`.
+2. Configure required reviewers for QA and Production.
+3. Configure Azure federated identity credentials for each environment.
+4. Add Azure and Terraform state secrets to each GitHub Environment.
+5. Confirm the Azure identity has appropriately scoped RBAC.
+
+See:
+
+- `docs/cicd/github-environments.md`
+- `docs/cicd/azure-oidc.md`
+- `docs/cicd/remote-state.md`
+- `docs/operations/deployment-runbook.md`
+
+## Local validation
 
 ```bash
 terraform fmt -check -recursive
-
 terraform -chdir=environments/dev init -backend=false -reconfigure
 terraform -chdir=environments/dev validate
-
-terraform -chdir=environments/qa init -backend=false -reconfigure
-terraform -chdir=environments/qa validate
-
-terraform -chdir=environments/prod init -backend=false -reconfigure
-terraform -chdir=environments/prod validate
 ```
 
 ## Roadmap
@@ -55,7 +59,9 @@ terraform -chdir=environments/prod validate
 - [x] v1.4.0 Shared platform services
 - [x] v1.5.0 AKS platform
 - [x] v1.6.0 Monitoring and diagnostics
-- [ ] v1.7.0 Deployment workflows
-- [ ] v2.0.0 Integrated platform
+- [x] v1.7.0 CI/CD deployment workflows
+- [ ] v1.8.0 Private networking and security
+- [ ] v1.9.0 Operational alerts and automation
+- [ ] v2.0.0 Integrated production release
 
 Maintained by [Harshil Amin](https://github.com/harshilamin).

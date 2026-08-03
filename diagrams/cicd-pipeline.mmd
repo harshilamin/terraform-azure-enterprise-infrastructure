@@ -1,0 +1,13 @@
+flowchart LR
+    DEV[Feature Branch] --> PR[Pull Request]
+    PR --> FMT[Terraform Format]
+    PR --> VAL[Validate Dev QA Prod]
+    PR --> LINT[TFLint]
+    PR --> SEC[Checkov]
+    FMT --> MERGE[Merge to Main]
+    VAL --> MERGE
+    LINT --> MERGE
+    SEC --> MERGE
+    MERGE --> DDEV[Automatic Dev Apply]
+    DDEV --> QA[Manual QA Promotion]
+    QA --> PROD[Protected Production Promotion]

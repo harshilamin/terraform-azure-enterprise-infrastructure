@@ -1,17 +1,26 @@
 # Changelog
 
+## [1.7.0] - 2026-08-02
+
+### Added
+
+- Pull request Terraform CI workflow
+- TFLint and Checkov scanning
+- On-demand Terraform planning with artifacts
+- Automatic Development deployment
+- Protected QA and Production deployment workflow
+- Azure OIDC authentication
+- Remote AzureRM backend declarations
+- GitHub Environment configuration guide
+- Azure federation setup guide
+- Deployment and rollback runbooks
+- CI/CD architecture diagram
+
 ## [1.6.0] - 2026-08-02
 
 ### Added
 
-- Azure Monitor diagnostic-setting module
-- Azure Monitor action-group module
-- AKS diagnostic settings
-- Key Vault diagnostic settings
-- Container Registry diagnostic settings
-- Storage Account diagnostic settings
-- Environment-specific notification configuration
-- Monitoring architecture and operations documentation
+- Monitoring and diagnostic settings
 
 ## [1.5.0] - 2026-08-02
 
