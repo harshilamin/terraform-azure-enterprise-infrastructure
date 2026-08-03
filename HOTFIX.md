@@ -1,11 +1,24 @@
-# v1.5.3 Hotfix
+# v1.8.2 Hotfix
 
-Adds only the missing `spoke_subnets` local map to Dev, QA, and Prod.
+## Issue
 
-This hotfix intentionally does not redefine:
+The v1.8.0 route-table configuration associated both:
 
-- `hub_address_space`
-- `spoke_address_space`
-- `hub_subnets`
+- `module.spoke_aks_subnet.id`
+- `module.spoke_app_subnet.id`
 
-That avoids the duplicate-local errors from the previous hotfix.
+However, the application subnet module was not present in the environment roots.
+
+## Resolution
+
+This hotfix adds `spoke_app_subnet` to:
+
+- Dev
+- QA
+- Prod
+
+The subnet uses the existing environment-specific value:
+
+```hcl
+local.spoke_subnets.app
+```

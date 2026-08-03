@@ -17,11 +17,14 @@
 - role-assignment
 - diagnostic-setting
 - action-group
+- route-table
+- private-dns-zone
+- private-endpoint
+- management-lock
 
 ## Planned
 
-- Route table
-- Private DNS
-- Private endpoints
 - Metric alerts
 - Scheduled query alerts
+- Budgets
+- Operational automation

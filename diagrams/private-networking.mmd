@@ -1,0 +1,8 @@
+flowchart LR
+    AKS[AKS Subnet] --> DNS[Private DNS Zones]
+    APP[Application Subnet] --> DNS
+    DNS --> PES[Private Endpoint Subnet]
+    PES --> KV[Key Vault]
+    PES --> ACR[Container Registry]
+    PES --> BLOB[Storage Blob]
+    PES --> FILE[Storage File]
