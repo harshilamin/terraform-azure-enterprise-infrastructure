@@ -1,0 +1,12 @@
+{
+  "aks_cluster_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "aks-platform-dev-cus-001"
+  },
+  "resource_group_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "rg-platform-dev-cus-001"
+  }
+}
