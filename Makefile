@@ -1,15 +1,16 @@
 SHELL := /bin/bash
 
-.PHONY: help fmt fmt-check validate lint security docs clean
+.PHONY: help fmt fmt-check validate lint security markdown quality clean
 
 help:
-	@echo "make fmt        Format Terraform"
-	@echo "make fmt-check  Check Terraform formatting"
-	@echo "make validate   Validate Dev, QA, and Prod"
-	@echo "make lint       Run TFLint"
-	@echo "make security   Run Checkov"
-	@echo "make docs       Generate module documentation"
-	@echo "make clean      Remove local Terraform artifacts"
+	@echo "make fmt         Format Terraform"
+	@echo "make fmt-check   Check Terraform formatting"
+	@echo "make validate    Validate Dev, QA, and Prod"
+	@echo "make lint        Run TFLint"
+	@echo "make security    Run Checkov, tfsec, and Trivy"
+	@echo "make markdown    Run markdownlint"
+	@echo "make quality     Run all local checks"
+	@echo "make clean       Remove Terraform caches and plans"
 
 fmt:
 	terraform fmt -recursive
@@ -28,10 +29,14 @@ lint:
 	tflint --recursive --format compact
 
 security:
-	checkov --directory . --framework terraform --compact --soft-fail --skip-path .terraform
+	checkov --directory . --config-file .checkov.yml
+	tfsec . --config-file .tfsec.yml
+	trivy config --config trivy.yaml .
 
-docs:
-	terraform-docs recursive modules
+markdown:
+	markdownlint "**/*.md" --ignore ".terraform"
+
+quality: fmt-check validate lint security markdown
 
 clean:
 	find . -type d -name .terraform -prune -exec rm -rf {} +
