@@ -5,12 +5,17 @@
 ## Validation
 
 - [ ] Terraform formatting passes
-- [ ] Terraform validation passes
-- [ ] TFLint passes
-- [ ] Documentation is updated
-- [ ] No secrets are committed
+- [ ] Dev validates
+- [ ] QA validates
+- [ ] Prod validates
+- [ ] Documentation updated
+- [ ] No secrets committed
 
-## Security, architecture, and cost impact
+## Security impact
+
+## Cost impact
+
+## Operational impact
 
 ## Related issue
 

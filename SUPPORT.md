@@ -1,3 +1,5 @@
 # Support
 
-Use GitHub Issues for reproducible defects, feature proposals, and documentation questions. Sanitize all logs and remove subscription IDs, tenant IDs, credentials, and sensitive output.
+Use GitHub Issues for reproducible defects, documentation questions, feature proposals, and architecture discussions.
+
+Remove secrets and sensitive Azure information from all logs.
