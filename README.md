@@ -1,28 +1,35 @@
 # Enterprise Azure Landing Zone Reference Architecture
 
-## Release v1.5.0
+## Release v1.6.0
 
-This release adds the Azure Kubernetes Service platform layer.
+This release adds centralized Azure Monitor diagnostics and alert routing.
 
 ### Added
 
-- Reusable AKS module
-- Reusable Azure role-assignment module
-- User-assigned managed identity integration
-- Azure CNI networking
-- Environment-specific node sizing and autoscaling
-- Log Analytics integration
-- ACR pull permissions for the AKS kubelet identity
-- Cluster outputs for Dev, QA, and Prod
-- AKS architecture and operations documentation
+- Reusable Azure Monitor diagnostic-setting module
+- Reusable Azure Monitor action-group module
+- Diagnostic logs for AKS, Key Vault, ACR, and Storage
+- Metrics forwarding to Log Analytics
+- Environment-specific log retention and notification settings
+- Monitoring architecture and operational documentation
 
-## Environment sizing
+## Monitoring flow
 
-| Environment | VM size | Min nodes | Max nodes | Private cluster |
-|---|---|---:|---:|---|
-| Dev | Standard_D2s_v5 | 1 | 3 | No |
-| QA | Standard_D2s_v5 | 1 | 4 | No |
-| Prod | Standard_D4s_v5 | 3 | 8 | Yes |
+```text
+AKS / Key Vault / ACR / Storage
+              |
+              v
+     Diagnostic Settings
+              |
+              v
+     Log Analytics Workspace
+              |
+              v
+        Azure Monitor
+              |
+              v
+         Action Group
+```
 
 ## Validate
 
@@ -47,7 +54,7 @@ terraform -chdir=environments/prod validate
 - [x] v1.3.0 Hub-and-spoke networking
 - [x] v1.4.0 Shared platform services
 - [x] v1.5.0 AKS platform
-- [ ] v1.6.0 Monitoring and diagnostics
+- [x] v1.6.0 Monitoring and diagnostics
 - [ ] v1.7.0 Deployment workflows
 - [ ] v2.0.0 Integrated platform
 

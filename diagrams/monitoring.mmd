@@ -1,0 +1,9 @@
+flowchart LR
+    AKS[AKS] --> DIAG[Diagnostic Settings]
+    KV[Key Vault] --> DIAG
+    ACR[Container Registry] --> DIAG
+    ST[Storage Account] --> DIAG
+    DIAG --> LAW[Log Analytics]
+    LAW --> MON[Azure Monitor]
+    MON --> AG[Action Group]
+    AG --> EMAIL[Email Receiver]

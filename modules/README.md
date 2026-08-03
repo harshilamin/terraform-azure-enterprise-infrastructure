@@ -15,11 +15,13 @@
 - log-analytics
 - aks
 - role-assignment
+- diagnostic-setting
+- action-group
 
 ## Planned
 
 - Route table
 - Private DNS
 - Private endpoints
-- Diagnostic settings
-- Alerts
+- Metric alerts
+- Scheduled query alerts

@@ -1,18 +1,23 @@
 # Changelog
 
+## [1.6.0] - 2026-08-02
+
+### Added
+
+- Azure Monitor diagnostic-setting module
+- Azure Monitor action-group module
+- AKS diagnostic settings
+- Key Vault diagnostic settings
+- Container Registry diagnostic settings
+- Storage Account diagnostic settings
+- Environment-specific notification configuration
+- Monitoring architecture and operations documentation
+
 ## [1.5.0] - 2026-08-02
 
 ### Added
 
-- Azure Kubernetes Service module
-- Azure role-assignment module
-- Azure CNI cluster networking
-- Managed identity integration
-- Cluster autoscaling
-- Log Analytics integration
-- ACR pull role assignment
-- Environment-specific AKS sizing
-- AKS architecture and operations documentation
+- Azure Kubernetes Service platform
 
 ## [1.4.0] - 2026-08-02
 
