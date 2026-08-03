@@ -1,24 +1,30 @@
 # Changelog
 
+## [1.5.0] - 2026-08-02
+
+### Added
+
+- Azure Kubernetes Service module
+- Azure role-assignment module
+- Azure CNI cluster networking
+- Managed identity integration
+- Cluster autoscaling
+- Log Analytics integration
+- ACR pull role assignment
+- Environment-specific AKS sizing
+- AKS architecture and operations documentation
+
 ## [1.4.0] - 2026-08-02
 
 ### Added
 
-- User-assigned managed identity module
-- Azure Key Vault module
-- Azure Storage Account module
-- Azure Container Registry module
-- Log Analytics Workspace module
-- Shared service configuration for Dev, QA, and Prod
-- Environment-specific service tiers and retention
-- Shared service architecture documentation
-- Shared service Mermaid diagram
+- Shared Azure platform services
 
 ## [1.3.0] - 2026-08-02
 
 ### Added
 
-- Hub-and-spoke networking modules and environment configurations
+- Hub-and-spoke networking
 
 ## [1.2.0] - 2026-08-02
 

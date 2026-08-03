@@ -1,0 +1,8 @@
+flowchart TB
+    Dev[Developer] --> ACR[Azure Container Registry]
+    ACR --> AKS[Azure Kubernetes Service]
+    ID[User Assigned Managed Identity] --> AKS
+    AKS --> LAW[Log Analytics Workspace]
+    AKS --> KV[Azure Key Vault]
+    AKS --> ST[Azure Storage Account]
+    AKS --> SN[AKS Subnet]
