@@ -1,7 +1,14 @@
 # Changelog
 
-## [1.2.0] - 2026-08-02
+## [1.3.0] - 2026-08-02
 
-- Added naming and resource-group modules
-- Added Dev, QA, and Prod roots
-- Added validation workflow
+### Added
+- Virtual network module
+- Subnet module
+- Network security group module
+- VNet peering module
+- Dev, QA, and Prod hub-and-spoke roots
+- Networking documentation and diagram
+
+## [1.2.0] - 2026-08-02
+- Naming and resource group modules
