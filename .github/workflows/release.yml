@@ -1,0 +1,70 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    name: Validate release tag
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.8.5"
+          terraform_wrapper: false
+
+      - name: Check formatting
+        run: terraform fmt -check -recursive
+
+      - name: Validate environments
+        shell: bash
+        run: |
+          for environment in dev qa prod; do
+            terraform -chdir="environments/${environment}" init -backend=false -reconfigure
+            terraform -chdir="environments/${environment}" validate
+          done
+
+  release:
+    name: Package and publish
+    needs: validate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create release archive
+        shell: bash
+        run: |
+          archive_name="terraform-azure-enterprise-infrastructure-${GITHUB_REF_NAME}.zip"
+          zip -r "${archive_name}" .             -x ".git/*"             -x "**/.terraform/*"             -x ".venv/*"             -x "site/*"             -x "*.tfstate"             -x "*.tfstate.*"
+          echo "ARCHIVE_NAME=${archive_name}" >> "${GITHUB_ENV}"
+
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-${{ github.ref_name }}
+          path: ${{ env.ARCHIVE_NAME }}
+          retention-days: 30
+          if-no-files-found: error
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: ${{ env.ARCHIVE_NAME }}
+          body_path: RELEASE_NOTES.md
