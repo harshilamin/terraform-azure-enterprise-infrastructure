@@ -1,0 +1,36 @@
+# v2.1.0 Overlay Manifest
+
+- `.gitattributes`
+- `.github/dependabot.yml`
+- `.github/workflows/dependency-review.yml`
+- `.github/workflows/portfolio-readiness.yml`
+- `.github/workflows/release.yml`
+- `.gitignore`
+- `APPLY_INSTRUCTIONS.md`
+- `CHANGELOG.md`
+- `CONTRIBUTING.md`
+- `FINAL_RELEASE_NOTES.md`
+- `README.md`
+- `SECURITY.md`
+- `docs/adr/0001-modular-terraform.md`
+- `docs/adr/0002-separate-environment-roots.md`
+- `docs/adr/0003-oidc-for-cicd.md`
+- `docs/adr/0004-portfolio-validation-mode.md`
+- `docs/adr/README.md`
+- `docs/adr/template.md`
+- `docs/governance/line-endings.md`
+- `docs/governance/repository-settings.md`
+- `docs/index.md`
+- `docs/portfolio/demo-script.md`
+- `docs/portfolio/final-walkthrough.md`
+- `docs/portfolio/github-listing.md`
+- `docs/portfolio/next-repositories.md`
+- `docs/portfolio/project-maturity.md`
+- `docs/portfolio/repository-1-final.md`
+- `docs/portfolio/skills-matrix.md`
+- `docs/releases/release-process.md`
+- `docs/releases/v2.1.0-checklist.md`
+- `docs/security/supply-chain-security.md`
+- `mkdocs.yml`
+- `scripts/final-readiness.ps1`
+- `scripts/final-readiness.sh`

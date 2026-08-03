@@ -7,6 +7,8 @@ on:
 
 permissions:
   contents: write
+  id-token: write
+  attestations: write
 
 concurrency:
   group: release-${{ github.ref }}
@@ -14,7 +16,7 @@ concurrency:
 
 jobs:
   validate:
-    name: Validate release tag
+    name: Validate release
     runs-on: ubuntu-latest
 
     steps:
@@ -27,7 +29,7 @@ jobs:
           terraform_version: "1.8.5"
           terraform_wrapper: false
 
-      - name: Check formatting
+      - name: Check Terraform formatting
         run: terraform fmt -check -recursive
 
       - name: Validate environments
@@ -38,8 +40,29 @@ jobs:
             terraform -chdir="environments/${environment}" validate
           done
 
+      - name: Run native Terraform tests
+        shell: bash
+        run: |
+          for module in naming resource-group subnet; do
+            terraform -chdir="modules/${module}" init -backend=false -reconfigure
+            terraform -chdir="modules/${module}" test
+          done
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-docs.txt
+
+      - name: Install documentation dependencies
+        run: python -m pip install -r requirements-docs.txt
+
+      - name: Build documentation
+        run: python -m mkdocs build --strict
+
   release:
-    name: Package and publish
+    name: Package and publish release
     needs: validate
     runs-on: ubuntu-latest
 
@@ -47,24 +70,42 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Create release archive
+      - name: Create tracked-source archive
+        id: package
         shell: bash
         run: |
           archive_name="terraform-azure-enterprise-infrastructure-${GITHUB_REF_NAME}.zip"
-          zip -r "${archive_name}" .             -x ".git/*"             -x "**/.terraform/*"             -x ".venv/*"             -x "site/*"             -x "*.tfstate"             -x "*.tfstate.*"
-          echo "ARCHIVE_NAME=${archive_name}" >> "${GITHUB_ENV}"
+          git archive --format=zip --output="${archive_name}" HEAD
+          sha256sum "${archive_name}" > "${archive_name}.sha256"
+
+          echo "archive_name=${archive_name}" >> "${GITHUB_OUTPUT}"
+          echo "checksum_name=${archive_name}.sha256" >> "${GITHUB_OUTPUT}"
+
+      - name: Attest release archive
+        if: github.event.repository.private == false
+        uses: actions/attest@v4
+        with:
+          subject-path: ${{ steps.package.outputs.archive_name }}
 
       - name: Upload workflow artifact
         uses: actions/upload-artifact@v4
         with:
           name: source-${{ github.ref_name }}
-          path: ${{ env.ARCHIVE_NAME }}
+          path: |
+            ${{ steps.package.outputs.archive_name }}
+            ${{ steps.package.outputs.checksum_name }}
           retention-days: 30
           if-no-files-found: error
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-          generate_release_notes: true
-          files: ${{ env.ARCHIVE_NAME }}
-          body_path: RELEASE_NOTES.md
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARCHIVE_NAME: ${{ steps.package.outputs.archive_name }}
+          CHECKSUM_NAME: ${{ steps.package.outputs.checksum_name }}
+        shell: bash
+        run: |
+          gh release create "${GITHUB_REF_NAME}" \
+            "${ARCHIVE_NAME}" \
+            "${CHECKSUM_NAME}" \
+            --title "Release ${GITHUB_REF_NAME}" \
+            --notes-file FINAL_RELEASE_NOTES.md

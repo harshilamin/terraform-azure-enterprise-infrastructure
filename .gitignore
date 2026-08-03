@@ -1,4 +1,4 @@
-# Terraform working files
+# Terraform
 .terraform/
 .terraform.lock.hcl
 *.tfstate
@@ -9,7 +9,7 @@ tfplan.txt
 crash.log
 crash.*.log
 
-# Real variable files and secrets
+# Real variable files and credentials
 terraform.tfvars
 *.auto.tfvars
 *.auto.tfvars.json
@@ -21,10 +21,17 @@ terraform.tfvars
 credentials/
 secrets/
 
-# Python
+# Python and MkDocs
 .venv/
+venv/
 __pycache__/
 *.pyc
+site/
+
+# Tool caches
+.tflint.d/
+.checkov/
+.trivycache/
 
 # Editors and operating systems
 .idea/

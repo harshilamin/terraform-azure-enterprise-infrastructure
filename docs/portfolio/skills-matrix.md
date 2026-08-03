@@ -1,14 +1,16 @@
-# Skills Matrix
+# Portfolio Skills Matrix
 
-| Resume skill | Repository evidence |
+| Skill | Evidence |
 |---|---|
-| Azure | Multi-environment landing zone architecture |
-| Terraform | Reusable modules and environment roots |
-| AKS | Cluster module with identity, networking, autoscaling |
-| GitHub Actions | CI, plan, deployment, approvals |
-| Networking | Hub-and-spoke, NSGs, routing, Private Link |
-| Security | Key Vault, RBAC, OIDC, private endpoints |
-| Monitoring | Log Analytics, diagnostics, action groups |
-| Automation | PowerShell, Bash, Makefile |
-| Operations | Runbooks, troubleshooting, rollback |
-| Governance | Naming, tagging, locks, budgets |
+| Azure architecture | Multi-environment landing-zone design |
+| Terraform | 21 reusable modules and separate roots |
+| AKS | Azure CNI, autoscaling, managed identity, RBAC, OIDC |
+| Networking | Hub-and-spoke, NSGs, peering, routes, Private Link |
+| Security | Key Vault, private endpoints, locks, dependency review |
+| CI/CD | GitHub Actions validation, promotion, and releases |
+| Testing | Native Terraform tests and strict docs builds |
+| Observability | Log Analytics, diagnostics, Action Groups, alerts |
+| Governance | Naming, tags, budgets, CODEOWNERS, ADRs |
+| Automation | PowerShell, Bash, Makefile, pre-commit |
+| Operations | Troubleshooting, rollback, incident and cost guidance |
+| Communication | MkDocs, diagrams, walkthroughs, release history |

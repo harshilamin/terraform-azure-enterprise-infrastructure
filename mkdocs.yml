@@ -4,78 +4,93 @@ site_author: Harshil Amin
 repo_name: harshilamin/terraform-azure-enterprise-infrastructure
 repo_url: https://github.com/harshilamin/terraform-azure-enterprise-infrastructure
 edit_uri: edit/main/docs/
-
 theme:
   name: material
   features:
-    - navigation.instant
-    - navigation.sections
-    - navigation.top
-    - content.code.copy
-    - content.action.edit
-    - search.suggest
-    - search.highlight
-
+  - navigation.instant
+  - navigation.sections
+  - navigation.top
+  - content.code.copy
+  - content.action.edit
+  - search.suggest
+  - search.highlight
 markdown_extensions:
-  - admonition
-  - attr_list
-  - def_list
-  - tables
-  - toc:
-      permalink: true
-  - pymdownx.details
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: pymdownx.superfences.fence_code_format
-  - pymdownx.highlight
-  - pymdownx.inlinehilite
-  - pymdownx.tabbed:
-      alternate_style: true
-
+- admonition
+- attr_list
+- def_list
+- tables
+- toc:
+    permalink: true
+- pymdownx.details
+- pymdownx.superfences:
+    custom_fences:
+    - name: mermaid
+      class: mermaid
+      format: pymdownx.superfences.fence_code_format
+- pymdownx.highlight
+- pymdownx.inlinehilite
+- pymdownx.tabbed:
+    alternate_style: true
 plugins:
-  - search
-
+- search
 nav:
-  - Home: index.md
-  - Getting Started:
-      - Deployment Guide: getting-started/deployment-guide.md
-      - Local Validation: getting-started/local-validation.md
-  - Architecture:
-      - Overview: architecture/README.md
-      - Platform Overview: architecture/overview.md
-      - AKS Platform: architecture/aks-platform.md
-      - Shared Services: architecture/shared-services.md
-      - Monitoring: architecture/monitoring.md
-      - Private Networking: architecture/private-networking.md
-      - Decision Summary: architecture/decision-summary.md
-  - Security:
-      - Security Model: security/security-model.md
-      - Resource Protection: security/resource-protection.md
-  - CI/CD:
-      - Overview: cicd/README.md
-      - GitHub Actions: cicd/github-actions.md
-      - GitHub Environments: cicd/github-environments.md
-      - Azure OIDC: cicd/azure-oidc.md
-      - Remote State: cicd/remote-state.md
-  - Operations:
-      - Troubleshooting: operations/troubleshooting.md
-      - Deployment Runbook: operations/deployment-runbook.md
-      - Rollback: operations/rollback.md
-      - AKS Operations: operations/aks-operations.md
-      - Monitoring Operations: operations/monitoring-operations.md
-      - Alert Response: operations/alert-response.md
-      - Cost Governance: operations/cost-governance.md
-      - Private Endpoint Validation: operations/private-endpoint-validation.md
-  - Testing:
-      - Native Terraform Tests: testing/native-terraform-tests.md
-  - Tooling:
-      - Local Quality Tooling: tooling/local-quality-tooling.md
-  - Portfolio:
-      - Hiring Manager Walkthrough: portfolio/hiring-manager-walkthrough.md
-      - Interview Talking Points: portfolio/interview-talking-points.md
-      - Skills Matrix: portfolio/skills-matrix.md
-      - Project Maturity: portfolio/project-maturity.md
-  - Releases:
-      - v2.0.4 Checklist: releases/v2.0.4-checklist.md
+- Home: index.md
+- Getting Started:
+  - Deployment Guide: getting-started/deployment-guide.md
+  - Local Validation: getting-started/local-validation.md
+- Architecture:
+  - Overview: architecture/README.md
+  - Platform Overview: architecture/overview.md
+  - AKS Platform: architecture/aks-platform.md
+  - Shared Services: architecture/shared-services.md
+  - Monitoring: architecture/monitoring.md
+  - Private Networking: architecture/private-networking.md
+  - Decision Summary: architecture/decision-summary.md
+  - Architecture Decisions:
+    - ADR Index: adr/README.md
+    - Modular Terraform: adr/0001-modular-terraform.md
+    - Environment Roots: adr/0002-separate-environment-roots.md
+    - OIDC Authentication: adr/0003-oidc-for-cicd.md
+    - Portfolio Validation Mode: adr/0004-portfolio-validation-mode.md
+- Security:
+  - Security Model: security/security-model.md
+  - Resource Protection: security/resource-protection.md
+  - Supply-Chain Security: security/supply-chain-security.md
+- CI/CD:
+  - Overview: cicd/README.md
+  - GitHub Actions: cicd/github-actions.md
+  - GitHub Environments: cicd/github-environments.md
+  - Azure OIDC: cicd/azure-oidc.md
+  - Remote State: cicd/remote-state.md
+- Operations:
+  - Troubleshooting: operations/troubleshooting.md
+  - Deployment Runbook: operations/deployment-runbook.md
+  - Rollback: operations/rollback.md
+  - AKS Operations: operations/aks-operations.md
+  - Monitoring Operations: operations/monitoring-operations.md
+  - Alert Response: operations/alert-response.md
+  - Cost Governance: operations/cost-governance.md
+  - Private Endpoint Validation: operations/private-endpoint-validation.md
+- Governance:
+  - Repository Settings: governance/repository-settings.md
+  - Branch Protection: governance/branch-protection.md
+  - Line Endings: governance/line-endings.md
+  - Repository Labels: governance/repository-labels.md
+- Testing:
+  - Native Terraform Tests: testing/native-terraform-tests.md
+- Tooling:
+  - Local Quality Tooling: tooling/local-quality-tooling.md
+  - Documentation Site: tooling/documentation-site.md
+- Portfolio:
+  - Final Walkthrough: portfolio/final-walkthrough.md
+  - Interview Demo Script: portfolio/demo-script.md
+  - Hiring Manager Walkthrough: portfolio/hiring-manager-walkthrough.md
+  - Interview Talking Points: portfolio/interview-talking-points.md
+  - Skills Matrix: portfolio/skills-matrix.md
+  - Project Maturity: portfolio/project-maturity.md
+  - Repository 1 Final Status: portfolio/repository-1-final.md
+  - GitHub Listing: portfolio/github-listing.md
+  - Next Repositories: portfolio/next-repositories.md
+- Releases:
+  - Release Process: releases/release-process.md
+  - v2.1.0 Final Checklist: releases/v2.1.0-checklist.md
