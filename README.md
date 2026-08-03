@@ -1,53 +1,41 @@
 # Enterprise Azure Landing Zone Reference Architecture
 
-## Release v1.7.0 — CI/CD Deployment Workflows
+## Release v1.8.0 — Private Networking and Security
 
-This release adds enterprise-style Terraform delivery automation:
+This release adds private connectivity and infrastructure protection patterns:
 
-- Pull request formatting, validation, TFLint, and Checkov
-- Azure OIDC authentication without stored client secrets
-- Remote AzureRM state initialization
-- On-demand Terraform plan artifacts
-- Automatic Development deployment after merge
-- Protected QA and Production promotion
-- Per-environment concurrency controls
-- Deployment and rollback runbooks
+- Reusable route-table module
+- Reusable private DNS zone module
+- Reusable private endpoint module
+- Reusable management-lock module
+- Dedicated private endpoint subnet per environment
+- Private endpoints for Key Vault, Container Registry, Storage Blob, and Storage File
+- Private DNS links to hub and spoke VNets
+- Route-table association for workload subnets
+- Production resource-group deletion lock
+- Security architecture and operational documentation
 
-## Delivery flow
+## Private connectivity flow
 
 ```mermaid
 flowchart LR
-    B[Feature Branch] --> PR[Pull Request]
-    PR --> CI[Format Validate TFLint Checkov]
-    CI --> M[Merge to Main]
-    M --> D[Automatic Dev Deployment]
-    D --> Q[Approved QA Deployment]
-    Q --> P[Approved Production Deployment]
+    AKS[AKS Workloads] --> DNS[Azure Private DNS]
+    DNS --> PE[Private Endpoints]
+    PE --> KV[Key Vault]
+    PE --> ACR[Container Registry]
+    PE --> ST[Storage Account]
 ```
 
-## Required setup
-
-Before running authenticated workflows:
-
-1. Create GitHub Environments: `dev`, `qa`, and `prod`.
-2. Configure required reviewers for QA and Production.
-3. Configure Azure federated identity credentials for each environment.
-4. Add Azure and Terraform state secrets to each GitHub Environment.
-5. Confirm the Azure identity has appropriately scoped RBAC.
-
-See:
-
-- `docs/cicd/github-environments.md`
-- `docs/cicd/azure-oidc.md`
-- `docs/cicd/remote-state.md`
-- `docs/operations/deployment-runbook.md`
-
-## Local validation
+## Validation
 
 ```bash
 terraform fmt -check -recursive
 terraform -chdir=environments/dev init -backend=false -reconfigure
 terraform -chdir=environments/dev validate
+terraform -chdir=environments/qa init -backend=false -reconfigure
+terraform -chdir=environments/qa validate
+terraform -chdir=environments/prod init -backend=false -reconfigure
+terraform -chdir=environments/prod validate
 ```
 
 ## Roadmap
@@ -59,8 +47,8 @@ terraform -chdir=environments/dev validate
 - [x] v1.4.0 Shared platform services
 - [x] v1.5.0 AKS platform
 - [x] v1.6.0 Monitoring and diagnostics
-- [x] v1.7.0 CI/CD deployment workflows
-- [ ] v1.8.0 Private networking and security
+- [x] v1.7.0 CI/CD reference workflows
+- [x] v1.8.0 Private networking and security
 - [ ] v1.9.0 Operational alerts and automation
 - [ ] v2.0.0 Integrated production release
 
