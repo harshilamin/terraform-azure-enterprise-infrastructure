@@ -1,29 +1,33 @@
 # Contributing
 
-Use feature branches, focused commits, pull requests, and local validation.
+## Workflow
 
-## Branches
+1. Create a branch from current `main`.
+2. Make focused changes.
+3. Run formatting and validation.
+4. Open a pull request.
+5. Merge only after checks pass.
+
+## Branch naming
 
 - `feature/<description>`
 - `fix/<description>`
 - `docs/<description>`
 - `chore/<description>`
-- `release/<version>`
 
-## Conventional commits
+## Commit examples
 
 ```text
-feat: add reusable resource group module
-fix: correct subnet validation
-docs: document hub routing
-ci: add Terraform validation
+feat: add reusable module
+fix: correct subnet variable
+docs: update operations guide
+ci: improve validation workflow
 ```
 
-## Validation
+## Required checks
 
-```bash
-make fmt
-make validate
-make lint
-make docs
+```powershell
+terraform fmt -recursive
+terraform fmt -check -recursive
+.\scripts\validate-all.ps1
 ```

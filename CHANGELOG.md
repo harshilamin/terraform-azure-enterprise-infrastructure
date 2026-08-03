@@ -1,34 +1,19 @@
 # Changelog
 
-## [2.0.0] - 2026-08-02
+## [2.0.1] - 2026-08-02
 
 ### Added
 
-- Integrated enterprise README
-- Architecture documentation index
-- End-to-end deployment guide
-- Troubleshooting guide
-- Security model
-- CI/CD documentation index
-- Hiring manager walkthrough
-- Interview talking points
-- Portfolio skills matrix
-- Final release checklist
-- Sanitized example outputs
-- Architecture decision summary
-- Project maturity assessment
+- Repository governance and contribution standards
+- CODEOWNERS
+- Pull request and issue templates
+- Security, support, and conduct policies
+- Release checklist and label guidance
 
-### Changed
+### Notes
 
-- Consolidated roadmap into a completed v2.0.0 portfolio release
-- Standardized navigation across documentation
-- Improved recruiter and hiring-manager usability
+No Terraform infrastructure files changed.
 
-## [1.9.0] - 2026-08-02
-- Operational alerts and automation
+## [2.0.0] - 2026-08-02
 
-## [1.8.0] - 2026-08-02
-- Private networking and security
-
-## [1.7.0] - 2026-08-02
-- CI/CD reference workflows
+- Integrated enterprise platform portfolio

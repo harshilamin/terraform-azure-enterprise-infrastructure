@@ -16,6 +16,10 @@ body:
     validations:
       required: true
   - type: input
-    id: version
+    id: terraform-version
     attributes:
       label: Terraform version
+  - type: input
+    id: provider-version
+    attributes:
+      label: AzureRM provider version
