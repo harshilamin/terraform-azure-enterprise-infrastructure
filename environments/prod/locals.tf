@@ -7,6 +7,10 @@ locals {
   hub_address_space   = ["10.0.0.0/16"]
   spoke_address_space = ["10.30.0.0/16"]
 
+  spoke_subnets = {
+    aks = ["10.30.1.0/24"]
+    app = ["10.30.2.0/24"]
+  }
   common_tags = {
     Environment         = local.environment_name
     Application         = "EnterprisePlatform"

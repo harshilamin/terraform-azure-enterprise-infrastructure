@@ -1,41 +1,28 @@
 # Enterprise Azure Landing Zone Reference Architecture
 
-## Release v1.4.0
+## Release v1.5.0
 
-This release adds shared Azure platform services used by application and Kubernetes workloads.
+This release adds the Azure Kubernetes Service platform layer.
 
 ### Added
 
-- User-assigned managed identity module
-- Azure Key Vault module
-- Azure Storage Account module
-- Azure Container Registry module
-- Log Analytics Workspace module
-- Shared-services configuration for Dev, QA, and Prod
-- Environment-specific service sizing
-- Service outputs and documentation
-- Validation workflow coverage for the new modules
+- Reusable AKS module
+- Reusable Azure role-assignment module
+- User-assigned managed identity integration
+- Azure CNI networking
+- Environment-specific node sizing and autoscaling
+- Log Analytics integration
+- ACR pull permissions for the AKS kubelet identity
+- Cluster outputs for Dev, QA, and Prod
+- AKS architecture and operations documentation
 
-## Shared services architecture
+## Environment sizing
 
-```text
-Platform Resource Group
-├── User Assigned Managed Identity
-├── Azure Key Vault
-├── Azure Container Registry
-├── Azure Storage Account
-└── Log Analytics Workspace
-```
-
-## Security principles
-
-- Managed identities instead of embedded credentials
-- Key Vault soft delete and purge protection
-- TLS 1.2 minimum for storage
-- Public blob access disabled
-- ACR admin account disabled
-- Centralized operational logs
-- No secrets committed to source control
+| Environment | VM size | Min nodes | Max nodes | Private cluster |
+|---|---|---:|---:|---|
+| Dev | Standard_D2s_v5 | 1 | 3 | No |
+| QA | Standard_D2s_v5 | 1 | 4 | No |
+| Prod | Standard_D4s_v5 | 3 | 8 | Yes |
 
 ## Validate
 
@@ -59,8 +46,9 @@ terraform -chdir=environments/prod validate
 - [x] v1.2.0 Naming and resource groups
 - [x] v1.3.0 Hub-and-spoke networking
 - [x] v1.4.0 Shared platform services
-- [ ] v1.5.0 AKS platform
+- [x] v1.5.0 AKS platform
 - [ ] v1.6.0 Monitoring and diagnostics
+- [ ] v1.7.0 Deployment workflows
 - [ ] v2.0.0 Integrated platform
 
 Maintained by [Harshil Amin](https://github.com/harshilamin).
