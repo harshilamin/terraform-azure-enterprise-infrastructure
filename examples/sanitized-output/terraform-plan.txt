@@ -1,0 +1,7 @@
+Terraform used the selected providers to generate the following execution plan.
+
+  + create
+
+Plan: 42 to add, 0 to change, 0 to destroy.
+
+Example only. This file is sanitized and does not represent a live Azure plan.

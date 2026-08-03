@@ -1,0 +1,9 @@
+flowchart TB
+    GitHub[GitHub Actions] --> Terraform[Terraform]
+    Terraform --> Azure[Azure Landing Zone]
+    Azure --> Networking[Hub and Spoke Networking]
+    Azure --> AKS[AKS]
+    Azure --> Shared[Shared Services]
+    Azure --> Security[Private Link and RBAC]
+    Azure --> Monitoring[Azure Monitor and Log Analytics]
+    Azure --> Governance[Tags Locks Budgets]

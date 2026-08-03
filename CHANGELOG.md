@@ -1,24 +1,34 @@
 # Changelog
 
-## [1.9.0] - 2026-08-02
+## [2.0.0] - 2026-08-02
 
 ### Added
 
-- Azure Monitor metric-alert module
-- Resource-group consumption budget module
-- Storage Account availability alert
-- Container Registry storage-usage alert
-- Optional monthly budget configuration
-- Cross-platform validation scripts
-- Terraform cache cleanup scripts
-- Alert response and cost-governance documentation
-- Operational automation diagram
+- Integrated enterprise README
+- Architecture documentation index
+- End-to-end deployment guide
+- Troubleshooting guide
+- Security model
+- CI/CD documentation index
+- Hiring manager walkthrough
+- Interview talking points
+- Portfolio skills matrix
+- Final release checklist
+- Sanitized example outputs
+- Architecture decision summary
+- Project maturity assessment
+
+### Changed
+
+- Consolidated roadmap into a completed v2.0.0 portfolio release
+- Standardized navigation across documentation
+- Improved recruiter and hiring-manager usability
+
+## [1.9.0] - 2026-08-02
+- Operational alerts and automation
 
 ## [1.8.0] - 2026-08-02
 - Private networking and security
 
 ## [1.7.0] - 2026-08-02
-- Terraform CI/CD workflow reference
-
-## [1.6.0] - 2026-08-02
-- Monitoring and diagnostic settings
+- CI/CD reference workflows
