@@ -1,13 +1,20 @@
 locals {
-  environment = "qa"
-  workload    = "platform"
-  region_code = "cus"
+  environment      = "qa"
+  environment_name = "QA"
+  workload         = "platform"
+  region_code      = "cus"
+
+  hub_address_space   = ["10.0.0.0/16"]
+  spoke_address_space = ["10.20.0.0/16"]
+
   common_tags = {
-    Environment         = "QA"
+    Environment         = local.environment_name
     Application         = "EnterprisePlatform"
     Owner               = var.owner
     ManagedBy           = "Terraform"
     CostCenter          = var.cost_center
+    DataClassification  = "Internal"
     BusinessCriticality = "Medium"
+    Repository          = "terraform-azure-enterprise-infrastructure"
   }
 }
