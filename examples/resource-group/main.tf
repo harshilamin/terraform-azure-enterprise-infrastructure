@@ -1,5 +1,6 @@
 module "name" {
-  source        = "../../modules/naming"
+  source = "../../modules/naming"
+
   resource_type = "rg"
   workload      = "example"
   environment   = "dev"
@@ -8,11 +9,19 @@ module "name" {
 }
 
 module "resource_group" {
-  source   = "../../modules/resource-group"
+  source = "../../modules/resource-group"
+
   name     = module.name.resource_name
   location = "Central US"
+
   tags = {
     Environment = "Development"
+    Application = "Example"
+    Owner       = "HarshilAmin"
     ManagedBy   = "Terraform"
   }
+}
+
+output "resource_group_name" {
+  value = module.resource_group.name
 }
