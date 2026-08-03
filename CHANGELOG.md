@@ -1,22 +1,24 @@
 # Changelog
 
-## [2.0.2] - 2026-08-02
+## [2.0.3] - 2026-08-02
 
 ### Added
 
-- Pre-commit configuration
-- TFLint configuration
-- Checkov configuration
-- tfsec configuration
-- Trivy configuration
-- Markdown linting
-- Local quality-check scripts
-- Tooling documentation
-- Expanded Makefile targets
+- Native Terraform tests for naming, resource-group, and subnet modules
+- Naming example
+- Resource-group example
+- Networking example
+- PowerShell and Bash test runners
+- Testing documentation
+- Release checklist
 
 ### Notes
 
-No Terraform infrastructure files changed.
+No existing environment or module implementation files were changed.
+
+## [2.0.2] - 2026-08-02
+
+- Local quality and security tooling
 
 ## [2.0.1] - 2026-08-02
 
