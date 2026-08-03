@@ -1,0 +1,5 @@
+# Budgets are disabled by default for portfolio-only validation.
+enable_cost_budget = false
+
+# Example:
+# budget_notification_emails = ["platform-owner@example.com"]

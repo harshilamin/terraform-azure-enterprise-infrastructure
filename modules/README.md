@@ -21,10 +21,10 @@
 - private-dns-zone
 - private-endpoint
 - management-lock
+- metric-alert
+- resource-group-budget
 
-## Planned
+## Next
 
-- Metric alerts
-- Scheduled query alerts
-- Budgets
-- Operational automation
+v2.0.0 will focus on portfolio integration, diagrams, deployment guidance,
+troubleshooting, examples, and interview-ready documentation.

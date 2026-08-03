@@ -1,0 +1,8 @@
+flowchart LR
+    ST[Storage Account] --> SA[Availability Alert]
+    ACR[Container Registry] --> CA[Storage Usage Alert]
+    SA --> AG[Azure Monitor Action Group]
+    CA --> AG
+    AG --> TEAM[Platform Owner]
+    RG[Resource Group] --> BUDGET[Monthly Budget]
+    BUDGET --> TEAM
