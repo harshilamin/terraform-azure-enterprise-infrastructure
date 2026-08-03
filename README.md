@@ -1,42 +1,44 @@
 # Enterprise Azure Landing Zone Reference Architecture
 
-## Release v1.8.0 — Private Networking and Security
+## Release v1.9.0 — Operational Alerts and Automation
 
-This release adds private connectivity and infrastructure protection patterns:
+This release adds operational alerting, budget controls, and engineering utility scripts.
 
-- Reusable route-table module
-- Reusable private DNS zone module
-- Reusable private endpoint module
-- Reusable management-lock module
-- Dedicated private endpoint subnet per environment
-- Private endpoints for Key Vault, Container Registry, Storage Blob, and Storage File
-- Private DNS links to hub and spoke VNets
-- Route-table association for workload subnets
-- Production resource-group deletion lock
-- Security architecture and operational documentation
+### Added
 
-## Private connectivity flow
+- Reusable Azure Monitor metric-alert module
+- Reusable resource-group budget module
+- Storage availability alerts
+- Container Registry storage-usage alerts
+- Optional monthly environment budgets
+- PowerShell and Bash validation scripts
+- Terraform cache cleanup scripts
+- Operational alerting and cost-governance documentation
+
+## Operational flow
 
 ```mermaid
 flowchart LR
-    AKS[AKS Workloads] --> DNS[Azure Private DNS]
-    DNS --> PE[Private Endpoints]
-    PE --> KV[Key Vault]
-    PE --> ACR[Container Registry]
-    PE --> ST[Storage Account]
+    Azure[Azure Platform Resources] --> Metrics[Azure Monitor Metrics]
+    Metrics --> Alerts[Metric Alerts]
+    Alerts --> ActionGroup[Action Group]
+    ActionGroup --> Owner[Platform Owner]
+
+    ResourceGroup[Environment Resource Group] --> Budget[Monthly Budget]
+    Budget --> Owner
 ```
 
-## Validation
+## Portfolio-only operation
 
-```bash
+The repository can be validated without an Azure subscription:
+
+```powershell
 terraform fmt -check -recursive
 terraform -chdir=environments/dev init -backend=false -reconfigure
 terraform -chdir=environments/dev validate
-terraform -chdir=environments/qa init -backend=false -reconfigure
-terraform -chdir=environments/qa validate
-terraform -chdir=environments/prod init -backend=false -reconfigure
-terraform -chdir=environments/prod validate
 ```
+
+Metric alerts and budgets require Azure resources and permissions only when planning or applying.
 
 ## Roadmap
 
@@ -49,7 +51,7 @@ terraform -chdir=environments/prod validate
 - [x] v1.6.0 Monitoring and diagnostics
 - [x] v1.7.0 CI/CD reference workflows
 - [x] v1.8.0 Private networking and security
-- [ ] v1.9.0 Operational alerts and automation
-- [ ] v2.0.0 Integrated production release
+- [x] v1.9.0 Operational alerts and automation
+- [ ] v2.0.0 Integrated portfolio release
 
 Maintained by [Harshil Amin](https://github.com/harshilamin).

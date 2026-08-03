@@ -1,25 +1,24 @@
 # Changelog
 
-## [1.8.0] - 2026-08-02
+## [1.9.0] - 2026-08-02
 
 ### Added
 
-- Route-table module
-- Private DNS zone module
-- Private endpoint module
-- Management-lock module
-- Dedicated private endpoint subnet
-- Private endpoints for Key Vault, ACR, Storage Blob, and Storage File
-- Private DNS links for hub and spoke VNets
-- Route-table association for AKS and application subnets
-- Production resource-group deletion lock
-- Private networking documentation and diagrams
+- Azure Monitor metric-alert module
+- Resource-group consumption budget module
+- Storage Account availability alert
+- Container Registry storage-usage alert
+- Optional monthly budget configuration
+- Cross-platform validation scripts
+- Terraform cache cleanup scripts
+- Alert response and cost-governance documentation
+- Operational automation diagram
+
+## [1.8.0] - 2026-08-02
+- Private networking and security
 
 ## [1.7.0] - 2026-08-02
-- Terraform CI/CD reference workflows
+- Terraform CI/CD workflow reference
 
 ## [1.6.0] - 2026-08-02
 - Monitoring and diagnostic settings
-
-## [1.5.0] - 2026-08-02
-- Azure Kubernetes Service platform
