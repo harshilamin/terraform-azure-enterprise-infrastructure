@@ -14,6 +14,7 @@ This repository demonstrates how a senior DevOps or Platform Engineer can design
 
 ## Architecture
 
+![Enterprise Azure Landing Zone](diagrams/enterprise-azure-landing-zone.png)
 ```mermaid
 flowchart TB
     GitHub[GitHub Actions] --> Terraform[Terraform Delivery]
@@ -241,8 +242,8 @@ A hiring manager can review the project in about ten minutes:
 
 ## Author
 
-**Harshil Amin**  
-Senior DevOps Engineer  
+**Harshil Amin**
+Senior DevOps Engineer
 GitHub: [harshilamin](https://github.com/harshilamin)
 
 ## License
